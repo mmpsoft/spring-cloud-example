@@ -1,4 +1,4 @@
-https://github.com/mmpsoft/spring-cloud-example/blob/master/README.md# spring-cloud-example
+# Spring Cloud Example
 
 spring-cloud-openfeign是服务提供者，使用 Nacos 注册中心，注册一个 HelloController 给到注册中心
 

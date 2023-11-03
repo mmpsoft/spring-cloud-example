@@ -29,6 +29,9 @@
         <spring.cloud.alibaba.version>2021.1</spring.cloud.alibaba.version>
         <junit.version>4.13.2</junit.version>
         <feign.httpclient.version>13.0</feign.httpclient.version>
+        <mybatis.version>2.3.1</mybatis.version>
+        <mybatisplus.version>3.5.4</mybatisplus.version>
+        <mybatis.generator.version>1.4.2</mybatis.generator.version>
     </properties>
 
     <dependencyManagement>
@@ -52,6 +55,23 @@
                 <groupId>io.github.openfeign</groupId>
                 <artifactId>feign-httpclient</artifactId>
                 <version>${feign.httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatisplus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-core</artifactId>
+                <version>${mybatis.generator.version}</version>
+                <scope>provided</scope>
             </dependency>
 
             <dependency>
@@ -82,5 +102,27 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.mybatis.generator</groupId>
+                    <artifactId>mybatis-generator-maven-plugin</artifactId>
+                    <version>1.4.2</version>
+                    <configuration>
+                        <!--允许移动生成的文件 -->
+                        <verbose>true</verbose>
+                        <!--允许覆盖生成的文件 -->
+                        <!--<overwrite>true</overwrite>-->
+                    </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>mysql</groupId>
+                            <artifactId>mysql-connector-java</artifactId>
+                            <version>${mysql.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 </project>

@@ -16,8 +16,8 @@
 <!--            <appenderRef ref="CONSOLE"/>-->
 <!--        </logger>-->
 
-<!--        <logger name="com.maguasoft.spring.tx.mapper" level="DEBUG" additivity="false">-->
-<!--            <appenderRef ref="CONSOLE"/>-->
-<!--        </logger>-->
+        <logger name="com.maguasoft.example.openfeign" level="DEBUG" additivity="false">
+            <appenderRef ref="CONSOLE"/>
+        </logger>
     </loggers>
 </Configuration>

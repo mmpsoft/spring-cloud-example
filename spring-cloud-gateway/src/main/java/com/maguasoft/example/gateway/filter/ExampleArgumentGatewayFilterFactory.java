@@ -13,6 +13,9 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 自定义可选参数路由过滤器，类名以 GatewayFilterFactory 结尾
+ */
 @Slf4j
 @Component
 public class ExampleArgumentGatewayFilterFactory extends AbstractGatewayFilterFactory<ExampleGatewayFilterConfig> {

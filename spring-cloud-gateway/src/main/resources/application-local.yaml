@@ -15,7 +15,7 @@ spring:
           uri: lb://spring-cloud-openfeign  # 路由目标的微服务名称，一般为 spring.application.name的值，lb表示负载均衡
           predicates: # 路由断言，判断请求是否符合规则，符合则路由到目标
             - Path=/hello/**,/test/** # 以路径(Path)作为规则判断，符合 /hello 开头的则符合，多个用 , 分开
-          filters:
-            - AddRequestHeader=X-Request, blue
-      default-filters:
-        - Example
+          filters: # 只作用于当前的路由
+            - AddRequestHeader=X-Request, blue # 添加请求头过滤器
+      default-filters: ## 作用于全部的路由
+        - Example # 自定义的过滤器，名字为ExampleGatewayFilterFactory，这里只需配置Example前缀即可

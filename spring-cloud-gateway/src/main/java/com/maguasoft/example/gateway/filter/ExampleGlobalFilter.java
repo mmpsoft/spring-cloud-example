@@ -5,6 +5,7 @@ import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AntPathMatcher;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
@@ -14,6 +15,9 @@ import reactor.core.publisher.Mono;
 @Slf4j
 @Component
 public class ExampleGlobalFilter implements GlobalFilter, Ordered {
+
+    // 路径匹配工具
+    private final AntPathMatcher antPathMatcher = new AntPathMatcher();
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {

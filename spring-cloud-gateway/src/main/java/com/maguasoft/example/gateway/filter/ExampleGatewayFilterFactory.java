@@ -5,6 +5,7 @@ import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.OrderedGatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.stereotype.Component;
@@ -39,6 +40,9 @@ public class ExampleGatewayFilterFactory extends AbstractGatewayFilterFactory<Ob
                 log.info("ServerHttpResponse: {}", response);
                 log.info("Attributes: {}", attributes);
 
+                // 表示终结filter，不在执行后面的filter琏
+                // exchange.getResponse().setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
+                // return exchange.getResponse().setComplete();
                 return chain.filter(exchange);
             }
         };

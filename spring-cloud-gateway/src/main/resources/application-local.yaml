@@ -1,0 +1,17 @@
+server:
+  port: 10086
+
+spring:
+  cloud:
+    loadbalancer: ## Loadbalancer retry
+      retry:
+        enabled: true
+    nacos: ## Nacos Config
+      config:
+        server-addr: 172.27.153.46:8848/nacos
+    gateway: ## Gateway Config
+      routes:
+        - id: spring-cloud-openfeign
+          uri: lb://spring-cloud-openfeign
+          predicates:
+            - Path=/hello/**

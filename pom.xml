@@ -16,6 +16,7 @@
     <modules>
         <module>spring-cloud-openfeign</module>
         <module>spring-cloud-sentinel</module>
+        <module>spring-cloud-gateway</module>
     </modules>
 
     <properties>

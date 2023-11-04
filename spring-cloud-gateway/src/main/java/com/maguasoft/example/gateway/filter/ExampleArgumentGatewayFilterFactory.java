@@ -10,19 +10,40 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
 @Component
-public class ExampleGatewayFilterFactory extends AbstractGatewayFilterFactory<Object> {
+public class ExampleArgumentGatewayFilterFactory extends AbstractGatewayFilterFactory<ExampleGatewayFilterConfig> {
+
+    /**
+     * 返回有关参数数顺序。返回值：提示列表
+     *
+     * @return List<String>
+     */
+    @Override
+    public List<String> shortcutFieldOrder() {
+        return List.of("age", "name", "address");
+    }
+
+    /**
+     * 参数对象的class
+     *
+     * @return <ExampleGatewayFilterConfig>
+     */
+    @Override
+    public Class<ExampleGatewayFilterConfig> getConfigClass() {
+        return ExampleGatewayFilterConfig.class;
+    }
 
     @Override
-    public GatewayFilter apply(Object config) {
+    public GatewayFilter apply(ExampleGatewayFilterConfig config) {
         return new GatewayFilter() {
             /**
              * @param exchange 整个请求的上下文，包含request, response, attr等信息
              * @param chain    filter的执行琏，调用 chain.filter(exchange)方法，执行下一个filter
-             * @return
+             * @return chain.filter(exchange)
              */
             @Override
             public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -33,6 +54,11 @@ public class ExampleGatewayFilterFactory extends AbstractGatewayFilterFactory<Ob
                 log.info("ServerHttpRequest: {}", request);
                 log.info("ServerHttpResponse: {}", response);
                 log.info("Attributes: {}", attributes);
+
+                // 自定义参数
+                log.info("age: {}", config.getAge());
+                log.info("name: {}", config.getName());
+                log.info("address: {}", config.getAddress());
 
                 return chain.filter(exchange);
             }

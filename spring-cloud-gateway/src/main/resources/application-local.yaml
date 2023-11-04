@@ -18,4 +18,10 @@ spring:
           filters: # 只作用于当前的路由
             - AddRequestHeader=X-Request, blue # 添加请求头过滤器
       default-filters: ## 作用于全部的路由
-        - Example # 自定义的过滤器，名字为ExampleGatewayFilterFactory，这里只需配置Example前缀即可
+        - Example=22,wangwu,shenzhen # 自定义的过滤器，名字为ExampleGatewayFilterFactory，这里只需配置Example前缀即可
+        - ExampleArgument=18,zhangsan,shenzhen # 快捷方法配置，参数的顺序需要和shortcutFieldOrder方法指定的顺序一致
+#        - name: ExampleArgument # 此种方法配置，无需按顺序配置参数
+#          args:
+#            - age: 19
+#              name: lisi
+#              address: beijin

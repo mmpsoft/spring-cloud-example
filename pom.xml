@@ -17,6 +17,8 @@
         <module>spring-cloud-openfeign</module>
         <module>spring-cloud-sentinel</module>
         <module>spring-cloud-gateway</module>
+        <module>spring-cloud-nacos-config</module>
+        <module>spring-cloud-config</module>
     </modules>
 
     <properties>

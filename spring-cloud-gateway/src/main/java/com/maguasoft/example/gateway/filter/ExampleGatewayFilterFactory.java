@@ -41,10 +41,11 @@ public class ExampleGatewayFilterFactory extends AbstractGatewayFilterFactory<Ob
                 log.info("Attributes: {}", attributes);
 
                 // 对下游的请求额外的处理，如：给下游的请求头中添加额外的请求头
-                // exchange.mutate().request(r -> {
+                // ServerWebExchange newExchange = exchange.mutate().request(r -> {
                 //     r.header("headerKey1", "headerValue1");
                 //     r.header("headerKey2", "headerValue2");
                 // }).build();
+                // return chain.filter(newExchange);
 
                 // 表示终结filter，不在执行后面的filter琏
                 // exchange.getResponse().setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);

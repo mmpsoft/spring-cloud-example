@@ -1,0 +1,8 @@
+## Nacos Config
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: 172.27.153.46:8848/nacos
+        file-extension: yaml
+
